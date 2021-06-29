@@ -7,6 +7,10 @@ jobs:
     container:
       image: apache/airflow:2.1.0
     steps:
+      - run: |
+         sudo mkdir code
+         sudo chmod 777 code
+         cd code
       - uses: actions/checkout@v2
       - name: Install airflow and run pylint
         run: |

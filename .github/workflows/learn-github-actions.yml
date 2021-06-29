@@ -1,16 +1,6 @@
 name: Airflow Lint DAGs
 
-on:
-  push:
-    paths:
-      - 'dags/**'
-  pull_request:
-    branches:
-      - master
-      - develop
-    paths:
-      - 'dags/**'
-
+on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest

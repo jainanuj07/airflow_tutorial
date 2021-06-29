@@ -4,10 +4,8 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [3.6]
-    name: Airflow ${{ matrix.python-version }}
+    container:
+      image: apache/airflow:2.1.0
     steps:
       - uses: actions/checkout@v2
       - name: Install airflow and run pylint

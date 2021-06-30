@@ -9,5 +9,5 @@ jobs:
     steps:
       - name: Install airflow and run pylint
         run: |
-          pip install pylint pylint-airflow
+          sudo pip install pylint pylint-airflow
           pylint --load-plugins=pylint_airflow --disable=missing-docstring dags

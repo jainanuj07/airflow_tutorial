@@ -1,4 +1,3 @@
-
 from datetime import timedelta
 from textwrap import dedent
 
@@ -42,18 +41,18 @@ with DAG(
 ) as dag:
 
     # t1, t2 and t3 are examples of tasks created by instantiating operators
-    t1 = BashOperator(
+    print_date = BashOperator(
         task_id='print_date',
         bash_command='date',
     )
 
-    t2 = BashOperator(
+    sleep = BashOperator(
         task_id='sleep',
         depends_on_past=False,
         bash_command='sleep 5',
         retries=3,
     )
-    t1.doc_md = dedent(
+    print_date.doc_md = dedent(
         """\
     #### Task Documentation
     You can document your task using the attributes `doc_md` (markdown),
@@ -79,10 +78,10 @@ with DAG(
     )
 
     t3 = BashOperator(
-        task_id='templated',
+        task_id='t3',
         depends_on_past=False,
         bash_command=templated_command,
         params={'my_param': 'Parameter I passed in'},
     )
 
-    t1 >> [t2, t3]
+    print_date >> [sleep, t3]

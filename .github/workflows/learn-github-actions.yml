@@ -4,10 +4,11 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: apache/airflow:2.1.0
+#    container:
+#      image: apache/airflow:2.1.0
     steps:
       - name: Install airflow and run pylint
         run: |
-          sudo pip install pylint pylint-airflow
+          pip install apache-airflow==2.1.0
+          pip install pylint pylint-airflow
           pylint --load-plugins=pylint_airflow --disable=missing-docstring dags

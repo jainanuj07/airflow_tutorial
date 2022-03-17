@@ -29,7 +29,5 @@ jobs:
       - name: Hello world action
         env:
           DB_TOKEN: ${{ secrets.DB_NONPROD_TOKEN }}
-        run: |
-          echo $DB_TOKEN
-          echo ${{ secrets.DB_NONPROD_TOKEN }}
+        run: ./.github/test.sh
 

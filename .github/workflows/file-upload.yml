@@ -30,4 +30,3 @@ jobs:
         env:
           DB_TOKEN: ${{ secrets.DB_NONPROD_TOKEN }}
         run: .github/test.sh
-

@@ -1,7 +1,10 @@
 name: Airflow Lint DAGs
 
-on: [push]
-jobs:
+on:
+  push:
+    branches:
+      - master
+
   build:
     runs-on: ubuntu-latest
 #    container:

@@ -1,4 +1,4 @@
-name: CI
+name: databricks_scripts_ci
 
 on:
   push:
@@ -7,10 +7,9 @@ on:
   pull_request:
     branches:
       - main
-
 jobs:
   build:
-    runs-on: ubuntu-latest  # windows-latest | macos-latest
+    runs-on: [self-hosted] # windows-latest | macos-latest
     name: Test changed-files
     steps:
       - uses: actions/checkout@v2
@@ -21,8 +20,16 @@ jobs:
         id: changed-files
         uses: tj-actions/changed-files@v18
 
-      - name: List all changed files
+
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
+      - name: Hello world action
+        env:
+          DB_TOKEN: ${{ secrets.DB_NONPROD_TOKEN }}
         run: |
-          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            echo "$file was changed"
-          done
+          echo $DB_TOKEN
+          echo "${{ secrets.DB_NONPROD_TOKEN }}"
+

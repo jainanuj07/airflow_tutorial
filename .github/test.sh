@@ -1,2 +1,2 @@
 echo "hello world"
-echo $DB_TOKEN
+echo “${DB_TOKEN}”

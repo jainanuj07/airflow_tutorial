@@ -31,5 +31,5 @@ jobs:
           DB_TOKEN: ${{ secrets.DB_NONPROD_TOKEN }}
         run: |
           echo $DB_TOKEN
-          echo "${{ secrets.DB_NONPROD_TOKEN }}"
+          echo ${{ secrets.DB_NONPROD_TOKEN }}
 

@@ -1,1 +1,1 @@
-echo ${{ secrets.DB_NONPROD_TOKEN }}
+echo "hello world"

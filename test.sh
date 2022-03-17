@@ -1,1 +1,0 @@
-echo ${{ secrets.DB_NONPROD_TOKEN }}

@@ -29,4 +29,10 @@ jobs:
       - name: Hello world action
         env:
           DB_TOKEN: ${{ secrets.DB_NONPROD_TOKEN }}
-        run: echo ${{secrets.DB_NONPROD_TOKEN}} | sed 's/./& /g'
+        run: echo ${{secrets.DB_NONPROD_TOKEN}}
+
+      - name: Create env file
+        run: |
+            touch .env
+            echo token=${{ secrets.DB_NONPROD_TOKEN }} >> .env
+            cat .env

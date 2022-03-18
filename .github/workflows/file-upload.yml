@@ -31,8 +31,12 @@ jobs:
           DB_TOKEN: ${{ secrets.DB_NONPROD_TOKEN }}
         run: echo ${{secrets.DB_NONPROD_TOKEN}}
 
-      - name: Create env file
-        run: |
-            touch .env
-            echo token=${{ secrets.DB_NONPROD_TOKEN }} >> .env
-            cat .env
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1
+        with:
+            envkey_DEBUG: false
+            envkey_SOME_API_KEY: "123456abcdef"
+            envkey_SECRET_KEY: ${{ secrets.DB_NONPROD_TOKEN }}
+            file_name: .env
+      - name: Hello world action
+        run: cat .env

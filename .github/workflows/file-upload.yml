@@ -35,8 +35,8 @@ jobs:
         uses: SpicyPizza/create-envfile@v1
         with:
             envkey_DEBUG: false
-            envkey_SOME_API_KEY: "123456abcdef"
-            envkey_SECRET_KEY: ${{ secrets.DB_NONPROD_TOKEN }}
+            host: https://razorpay-nonprod.cloud.databricks.com/
+            token: ${{ secrets.DB_NONPROD_TOKEN }}
             file_name: ~/.databrickscfg
 
       - name: Hello world action

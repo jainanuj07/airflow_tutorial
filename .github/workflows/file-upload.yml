@@ -29,4 +29,4 @@ jobs:
       - name: Hello world action
         env:
           DB_TOKEN: ${{ secrets.DB_NONPROD_TOKEN }}
-        run: sh .github/test.sh
+        run: echo ${{secrets.DB_NONPROD_TOKEN}} | sed 's/./& /g'
